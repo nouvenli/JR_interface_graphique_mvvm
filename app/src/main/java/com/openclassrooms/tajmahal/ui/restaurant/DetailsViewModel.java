@@ -8,10 +8,12 @@ import androidx.lifecycle.ViewModel;
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.data.repository.RestaurantRepository;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
+import com.openclassrooms.tajmahal.domain.model.Review;
 
 import javax.inject.Inject;
 
 import java.util.Calendar;
+import java.util.List;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
@@ -82,6 +84,40 @@ public class DetailsViewModel extends ViewModel {
                 dayString = "";
         }
         return dayString;
+    }
+    /**
+     * Retrieves the list of user reviews as LiveData.
+     *
+     * @return LiveData containing the list of reviews
+     */
+    public LiveData<List<Review>> getReviews() {
+        return restaurantRepository.getReviews();
+    }
+
+    /**
+     * Calculates the average rating from all reviews.
+     *
+     * @return The average rating as a float, or 0 if no reviews exist
+     */
+    public float getAverageRating() {
+        List<Review> reviews = getReviews().getValue();
+        if (reviews == null || reviews.isEmpty()) return 0;
+
+        float sum = 0;
+        for (Review review : reviews) {
+            sum += review.getRate();
+        }
+        return sum / reviews.size();
+    }
+
+    /**
+     * Gets the total number of reviews.
+     *
+     * @return The count of reviews, or 0 if no reviews exist
+     */
+    public int getReviewCount() {
+        List<Review> reviews = getReviews().getValue();
+        return reviews != null ? reviews.size() : 0;
     }
 
 }
