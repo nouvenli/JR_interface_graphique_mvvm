@@ -46,6 +46,46 @@
             app:layout_constraintTop_toBottomOf="@id/image"
             tools:text="Restaurant Indien" />
 
+        <TextView
+            android:id="@+id/tvAverageRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/jakarta_bold"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRestaurantName"
+            tools:text="4.0" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:progressTint="#FFB800"
+            android:rating="4.0"
+            android:stepSize="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAverageRating" />
+
+        <TextView
+            android:id="@+id/tvReviewCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/jakarta_regular"
+            android:text="(257)"
+            android:textColor="#666666"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/ratingBar"
+            app:layout_constraintTop_toBottomOf="@id/ratingBar" />
+
+
         <com.google.android.material.chip.ChipGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,7 +136,7 @@
             app:layout_constraintBottom_toTopOf="@+id/tvRestaurantHours"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvRestaurantName" />
+            app:layout_constraintTop_toBottomOf="@id/ratingBar" />
 
         <ImageView
             android:id="@+id/icon_hours"

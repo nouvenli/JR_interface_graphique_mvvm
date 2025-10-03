@@ -21,7 +21,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
  * MainViewModel is responsible for preparing and managing the data for the {@link DetailsFragment}.
  * It communicates with the {@link RestaurantRepository} to fetch restaurant details and provides
  * utility methods related to the restaurant UI.
- *
+ * <p>
  * This ViewModel is integrated with Hilt for dependency injection.
  */
 @HiltViewModel
@@ -85,6 +85,7 @@ public class DetailsViewModel extends ViewModel {
         }
         return dayString;
     }
+
     /**
      * Retrieves the list of user reviews as LiveData.
      *
